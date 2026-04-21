@@ -1,193 +1,566 @@
-<!-- ✅ Refined Makro static homepage
-     Pixel-tuned spacing + font sizing
-     GitHub Pages / repo optimized
--->
 <!DOCTYPE html>
 <html lang="es-ES">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Makro – Static GitHub Homepage</title>
-
-  <!-- Fonts -->
+  <meta name="description" content="Makro-style static homepage tuned from screenshot colors and spacing for GitHub Pages." />
+  <link rel="preconnect" href="https://cdn.metro-online.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.metro-group.com" crossorigin>
   <link rel="preload" href="https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Regular.woff2" as="font" crossorigin>
   <link rel="preload" href="https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Heavy.woff2" as="font" crossorigin>
-
   <style>
     @font-face {
       font-family: 'Lato';
       src: url('https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Regular.woff2') format('woff2');
       font-weight: 400;
+      font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: 'Lato';
       src: url('https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Heavy.woff2') format('woff2');
       font-weight: 800;
+      font-style: normal;
       font-display: swap;
     }
 
     :root {
-      --blue: #003b95;
-      --blue-cta: #0054ff;
-      --yellow: #ffe500;
-      --row-blue: #d9e8ff;
-      --tile-blue: #d8e7fb;
-      --green: #79b676;
+      /* Exact screenshot-matched colors sampled from the uploaded image */
+      --makro-blue: #002D72;
+      --makro-blue-deep: #00276e;
+      --makro-blue-cta: #0059E4;
+      --makro-blue-cta-hover: #004ec8;
+      --makro-yellow: #FFE61B;
+      --makro-row-blue: #CCE1FF;
+      --makro-row-blue-2: #D6E7FF;
+      --makro-tile-blue: #CCE1FF;
+      --makro-green: #6DAF71;
+      --makro-text: #002D72;
+      --makro-white: #FFFFFF;
+      --makro-page: #F2F4F7;
+      --makro-card: #FFFFFF;
+      --makro-subtle: #F2F3F5;
+      --makro-line: rgba(0,45,114,.18);
+      --stroke: 2.2;
+      --container: 1414px;
+      --radius: 0px;
+      --shadow: 0 0 0 1px rgba(0,0,0,.035);
     }
 
     * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      margin: 0;
       font-family: 'Lato', Arial, sans-serif;
-      color: var(--blue);
-      background: #f4f6f8;
+      background: var(--makro-page);
+      color: var(--makro-text);
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    svg { display: block; }
+
+    .page {
+      width: min(var(--container), calc(100vw - 22px));
+      margin: 0 auto;
+      background: var(--makro-card);
+      box-shadow: var(--shadow);
     }
 
-    img { max-width: 100%; display: block; }
-
-    /* HEADER */
     .topbar {
       height: 58px;
-      background: var(--blue);
+      background: var(--makro-blue);
+      color: var(--makro-white);
       display: flex;
       align-items: center;
-      padding: 0 14px;
-      gap: 16px;
-      color: #fff;
+      gap: 17px;
+      padding: 0 20px 0 22px;
     }
+    .brand { flex: 0 0 auto; display:flex; align-items:center; margin-right: 8px; }
+    .brand img { height: 28px; width: auto; }
 
-    .brand img { height: 28px; }
-
-    .nav {
+    .nav-pills {
       display: flex;
-      gap: 14px;
-      flex: 1;
+      gap: 13px;
+      align-items: center;
+      flex: 1 1 auto;
+      min-width: 0;
     }
-
     .pill {
       height: 40px;
-      padding: 0 16px;
+      min-width: 0;
+      padding: 0 17px;
       border-radius: 999px;
-      border: 2px solid #fff;
+      border: 2px solid rgba(255,255,255,.96);
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
+      color: var(--makro-white);
+      white-space: nowrap;
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .pill svg { width: 23px; height: 23px; flex: 0 0 23px; }
+    .pill .stroke-icon { stroke-width: var(--stroke); }
+
+    .account {
+      height: 58px;
+      margin-left: auto;
+      padding: 0 18px 0 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      background: rgba(255,255,255,.07);
+      border-left: 1px solid rgba(255,255,255,.07);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--makro-white);
+    }
+    .avatar {
+      width: 26px; height: 26px; border: 3px solid #fff; border-radius: 50%; position: relative; flex: 0 0 26px;
+    }
+    .avatar:before {
+      content:''; position:absolute; width:7px; height:7px; border-radius:50%; background:#fff; left:50%; top:2px; transform:translateX(-50%);
+    }
+    .avatar:after {
+      content:''; position:absolute; width:13px; height:8px; border-radius:10px 10px 6px 6px; background:#fff; left:50%; bottom:2px; transform:translateX(-50%);
+    }
+
+    .searchbar {
+      height: 64px;
+      background: var(--makro-row-blue);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 10px 23px 10px 22px;
+      border-top: 1px solid rgba(255,255,255,.25);
+    }
+    .searchbox {
+      height: 40px;
+      background: var(--makro-white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px 0 14px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+      color: var(--makro-text);
       font-size: 17px;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .searchbox svg { width: 25px; height: 25px; }
+
+    .search-right {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--makro-text);
+      font-size: 16px;
       font-weight: 800;
       white-space: nowrap;
     }
+    .search-right .item { display:flex; align-items:center; gap:10px; }
+    .search-right svg { width: 28px; height: 28px; }
+    .search-right .divider { width: 1px; height: 40px; background: rgba(0,45,114,.55); }
 
-    .account {
-      font-weight: 800;
-      padding-left: 16px;
+    .main {
+      background: #EFF3F7;
+      padding: 0 11px 11px;
     }
 
-    /* SEARCH */
-    .searchbar {
-      height: 64px;
-      background: var(--row-blue);
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1fr auto;
-      padding: 10px 22px;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .searchbox {
-      background: #fff;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      padding: 0 14px;
-      font-size: 18px;
-    }
-
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: 58% 42%;
+      grid-template-columns: 57.7% 42.3%;
       gap: 10px;
-      padding: 10px;
-      background: #f0f3f7;
     }
-
     .hero-left {
-      background: #fff;
-      display: grid;
-      grid-template-columns: 64% 36%;
+      background: var(--makro-white);
       min-height: 496px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
     }
-
-    .hero-copy {
-      padding: 24px 0 20px 38px;
+    .hero-left-grid {
+      display: grid;
+      grid-template-columns: 59.6% 40.4%;
+      min-height: 496px;
+      height: 100%;
     }
-
+    .hero-left-copy {
+      position: relative;
+      z-index: 2;
+      background: var(--makro-white);
+      clip-path: polygon(0 0, 70.3% 0, 88.9% 100%, 0% 100%);
+      padding: 25px 0 22px 36px;
+      display: flex;
+      flex-direction: column;
+    }
     .badge {
-      background: var(--blue);
-      color: #fff;
-      font-size: 17px;
-      font-weight: 800;
-      padding: 4px 8px;
       display: inline-block;
-      margin-bottom: 18px;
-    }
-
-    .hero-title {
-      font-size: clamp(36px, 4vw, 58px);
-      line-height: 0.98;
+      align-self: flex-start;
+      background: var(--makro-blue);
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
       font-weight: 800;
       text-transform: uppercase;
-      margin-bottom: 22px;
+      padding: 5px 8px 4px;
+      margin-bottom: 20px;
+      letter-spacing: .01em;
     }
-
-    .price {
-      font-size: 56px;
-      line-height: 0.95;
+    .hero-title {
+      margin: 0 0 22px;
+      color: var(--makro-blue);
+      max-width: 390px;
+      font-size: clamp(38px, 4vw, 55px);
+      line-height: .98;
       font-weight: 800;
-      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .01em;
     }
-
-    .cta {
-      display: inline-block;
-      background: var(--blue-cta);
-      color: #fff;
-      padding: 14px 24px;
+    .product-row {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      align-items: end;
+      gap: 12px;
+      margin-right: 46px;
+    }
+    .product-img {
+      width: 210px;
+      margin-left: 8px;
+      margin-bottom: 4px;
+    }
+    .product-copy {
+      color: var(--makro-blue);
+      padding-bottom: 14px;
+    }
+    .product-copy .name {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.28;
+      font-weight: 400;
+    }
+    .product-copy .price {
+      margin: 0 0 7px;
+      font-size: 58px;
+      line-height: .92;
       font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .product-copy .sub {
+      margin-bottom: 18px;
       font-size: 18px;
+      line-height: 1.15;
+      font-weight: 400;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      background: var(--makro-blue-cta);
+      color: #fff;
+      border-radius: 1px;
+      box-shadow: 0 1px 0 rgba(0,0,0,.08);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 800;
+      transition: background .15s ease;
+    }
+    .btn:hover { background: var(--makro-blue-cta-hover); }
+
+    .hero-left-image { position: relative; min-height: 496px; }
+    .hero-left-image img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center center;
     }
 
-    /* TILES */
+    .hero-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      min-height: 496px;
+    }
+    .promo-card {
+      position: relative;
+      min-height: 243px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--makro-white);
+    }
+    .promo-card .bg {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    .promo-card .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.14) 42%, rgba(0,0,0,0) 74%);
+    }
+    .promo-card .content {
+      position: relative; z-index: 1; padding: 20px 0 0 37px; max-width: 67%; color: #fff;
+    }
+    .promo-card h2 {
+      margin: 0 0 22px;
+      font-size: clamp(28px, 2.2vw, 36px);
+      line-height: 1.09;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .01em;
+    }
+    .promo-card.green {
+      background: var(--makro-green);
+    }
+    .promo-card.green .content {
+      max-width: 60%;
+      padding-top: 27px;
+      color: #fff;
+    }
+    .promo-card.green h2 { margin-bottom: 44px; }
+    .promo-card.green .phone {
+      position: absolute; right: 0; bottom: 0; width: 36.8%; min-width: 180px; max-width: 248px; height: 100%; object-fit: cover; object-position: left center;
+    }
+
     .tiles {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      padding: 10px;
+      margin-top: 10px;
     }
-
     .tile {
-      background: var(--tile-blue);
+      min-height: 140px;
+      background: var(--makro-tile-blue);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 18px;
-      font-weight: 800;
+      padding: 18px 18px 14px;
+      color: var(--makro-blue);
     }
-
     .tile img {
-      width: 58px;
-      margin-bottom: 16px;
+      width: 56px; height: 56px; object-fit: contain; margin-bottom: 17px;
+    }
+    .tile span {
+      font-size: 20px;
+      line-height: 1.16;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .tile span {
-      font-size: 22px;
-      text-decoration: underline;
+    .repo-note {
+      width: min(var(--container), calc(100vw - 22px));
+      margin: 10px auto 16px;
+      color: #5a7097;
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 400;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+
+    /* Breakpoints tuned to mirror Makro's mobile collapse behavior */
+    @media (max-width: 1240px) {
+      .page, .repo-note { width: min(var(--container), calc(100vw - 14px)); }
+      .pill { font-size: 15px; padding: 0 14px; }
+      .account { padding-inline: 14px; }
+      .hero-left-grid { grid-template-columns: 58% 42%; }
+      .hero-left-copy { padding-left: 28px; }
+      .hero-title { font-size: clamp(36px, 4.2vw, 51px); }
+      .product-row { grid-template-columns: 204px 1fr; margin-right: 34px; }
+      .product-img { width: 182px; margin-left: 2px; }
+      .product-copy .price { font-size: 50px; }
+      .tile span { font-size: 18px; }
+    }
+
+    @media (max-width: 1024px) {
+      .topbar { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 10px; gap: 10px; }
+      .nav-pills { order: 3; width: 100%; overflow-x: auto; padding-bottom: 2px; }
+      .account { height: 42px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); margin-left: 0; }
+      .searchbar { height: auto; grid-template-columns: 1fr; padding-bottom: 12px; }
+      .search-right { justify-content: space-between; gap: 16px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-right { grid-template-rows: auto auto; }
+      .tiles { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .page, .repo-note { width: min(var(--container), calc(100vw - 8px)); }
+      .topbar { padding-inline: 12px; }
+      .brand img { height: 26px; }
+      .pill { height: 38px; font-size: 14px; padding: 0 13px; gap: 8px; }
+      .pill svg { width: 20px; height: 20px; }
+      .searchbar { padding: 10px 12px 12px; }
+      .searchbox { font-size: 16px; }
+      .search-right { flex-wrap: wrap; justify-content: flex-start; row-gap: 10px; }
+      .search-right .divider { display: none; }
+      .main { padding: 0 8px 8px; }
+      .hero-left-grid { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left-copy { clip-path: none; padding: 18px 18px 18px; }
+      .hero-left-image { min-height: 228px; }
+      .hero-title { max-width: none; font-size: clamp(34px, 9vw, 46px); margin-bottom: 18px; }
+      .product-row { grid-template-columns: 1fr; margin-right: 0; gap: 10px; }
+      .product-img { width: 150px; margin-left: 0; margin-bottom: 2px; }
+      .product-copy { padding-bottom: 0; }
+      .product-copy .name { font-size: 18px; }
+      .product-copy .price { font-size: 46px; }
+      .product-copy .sub { font-size: 16px; margin-bottom: 14px; }
+      .promo-card .content { max-width: 72%; padding-left: 18px; padding-top: 18px; }
+      .promo-card.green .content { max-width: 72%; padding-left: 18px; padding-top: 18px; }
+      .promo-card h2 { font-size: clamp(24px, 6vw, 32px); margin-bottom: 16px; }
+      .promo-card.green h2 { margin-bottom: 18px; }
+      .promo-card.green .phone { min-width: 120px; width: 34%; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-pills { gap: 10px; }
+      .search-right { font-size: 14px; }
+      .search-right svg { width: 24px; height: 24px; }
+      .tiles { grid-template-columns: 1fr; }
+      .tile { min-height: 118px; }
+      .tile span { font-size: 18px; }
+      .btn { min-height: 44px; font-size: 16px; padding-inline: 18px; }
     }
   </style>
 </head>
 <body>
+  <svg aria-hidden="true" class="visually-hidden" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-market" viewBox="0 0 24 24">
+      <path class="stroke-icon" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h4l2 9h9l2-7H9M10 18a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM4 6 3 3M14 4l2 2m0-2-2 2"/>
+    </symbol>
+    <symbol id="i-delivery" viewBox="0 0 24 24">
+      <path class="stroke-icon" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v8H3zM14 10h4l3 3v2h-7zM7 19a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm11 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/>
+    </symbol>
+    <symbol id="i-store" viewBox="0 0 24 24">
+      <path class="stroke-icon" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 10l2-5h14l2 5M5 10h14v9H5zM9 19v-5h6v5"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle class="stroke-icon" cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/>
+      <path class="stroke-icon" d="M12 10v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="12" cy="7.2" r="1.25" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle class="stroke-icon" cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.15"/>
+      <path class="stroke-icon" d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-help" viewBox="0 0 24 24">
+      <circle class="stroke-icon" cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.15"/>
+      <path class="stroke-icon" d="M9.4 9a2.7 2.7 0 1 1 4.1 2.4c-.9.6-1.5 1.1-1.5 2.3" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="12" cy="17.3" r="1" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path class="stroke-icon" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" d="M12 21s6-6.1 6-11a6 6 0 1 0-12 0c0 4.9 6 11 6 11Z"/>
+      <circle class="stroke-icon" cx="12" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="2.15"/>
+    </symbol>
+  </svg>
 
-<!-- (content unchanged, only styling refined) -->
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a class="brand" href="https://www.makro.es/" aria-label="Makro">
+          <img src="https://cdn.metro-online.com/-/media/Project/MCW/shared/Bucket-Header/makro.svg?rev=-1&w=129&hash=48FCEF515538C5EED65AD287DD90FD75" alt="Makro logo" />
+        </a>
+        <nav class="nav-pills" aria-label="Primary navigation">
+          <a class="pill" href="https://www.makro.es/marketplace"><svg aria-hidden="true"><use href="#i-market"/></svg><span>Marketplace online</span></a>
+          <a class="pill" href="https://www.makro.es/distribucion-hosteleria"><svg aria-hidden="true"><use href="#i-delivery"/></svg><span>Distribución hostelería</span></a>
+          <a class="pill" href="https://www.makro.es/tu-tienda"><svg aria-hidden="true"><use href="#i-store"/></svg><span>Tu tienda</span></a>
+          <a class="pill" href="https://www.makro.es/info-y-servicios"><svg aria-hidden="true"><use href="#i-info"/></svg><span>Info &amp; servicios</span></a>
+        </nav>
+        <a class="account" href="https://www.makro.es/metro/services/idamstream/login" aria-label="Regístrate/Accede">
+          <span class="avatar" aria-hidden="true"></span>
+          <span>Regístrate/Accede</span>
+        </a>
+      </div>
 
+      <div class="searchbar">
+        <div class="searchbox" aria-label="Buscar en Makro">
+          <span>Buscar</span>
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+        </div>
+        <div class="search-right">
+          <div class="item"><svg aria-hidden="true"><use href="#i-help"/></svg><span>Ayuda</span></div>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="item"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Makro Madrid (Barajas)</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hero-grid" aria-label="Promociones destacadas">
+        <article class="hero-left">
+          <div class="hero-left-grid">
+            <div class="hero-left-copy">
+              <span class="badge">Compra más paga menos</span>
+              <h1 class="hero-title">Queso burrata<br/>para tu carta</h1>
+              <div class="product-row">
+                <img class="product-img" src="https://cdn.metro-online.com/-/media/Project/MCW/ES_Makro/home/Hero-transaccional/MSHOP/2026/burrata-producto.png?h=251&iar=0&w=251&rev=96d647254cea4d609452cdc77cfa198e&hash=15C486E7EC529CDF9A76F83A27246979" alt="Burrata Metro Chef 8 unidades (125 gr.)" />
+                <div class="product-copy">
+                  <div class="name">Burrata Metro Chef<br/>8 unidades (125 gr.)</div>
+                  <div class="price">14,75 €</div>
+                  <div class="sub">15,34 € IVA incl.</div>
+                  <a class="btn" href="https://tienda.makro.es/shop/pv/BTY-X201203/0032/0021/METRO-Chef-queso-burrata-125-g-contiene-8-unidades-(total-1-Kg)">Comprar ahora</a>
+                </div>
+              </div>
+            </div>
+            <div class="hero-left-image">
+              <img src="https://cdn.metro-online.com/-/media/Project/MCW/ES_Makro/home/Hero-transaccional/MSHOP/2026/burrata-ambiente.png?h=512&iar=0&w=355&rev=411175c12973486faa07f52aa04ee5fe&hash=BEFA3890EA67C6D8FAB7935C7E0EC198" alt="Queso burrata con tomate y rúcula" />
+            </div>
+          </div>
+        </article>
+
+        <div class="hero-right">
+          <article class="promo-card">
+            <img class="bg" src="https://cdn.metro-online.com/-/media/Project/MCW/ES_Makro/home/Hero-transaccional/INSPIRACIONAL/ES-CW14-HS-Category-1.png?h=250&iar=0&w=584&rev=e33dd3e8629c4f89bfba8b9f7580f95f&hash=3CC1FC81F850AE2ACF1DBA2A66291CB5" alt="Terraza exterior de hostelería" />
+            <div class="overlay"></div>
+            <div class="content">
+              <h2>Prepara ya tu terraza para el buen tiempo</h2>
+              <a class="btn" href="https://www.makro.es/marketplace/content/temporada-de-exterior-en-hosteleria/">Comprar ahora</a>
+            </div>
+          </article>
+
+          <article class="promo-card green">
+            <div class="content">
+              <h2>En Makro somos de factura verde</h2>
+              <a class="btn" href="https://www.makro.es/servicios/Servicios-Digitales/facturas-digitales">Saber más</a>
+            </div>
+            <img class="phone" src="https://cdn.metro-online.com/-/media/Project/MCW/ES_Makro/Info-y-servicios/servicios/servicios-digitales/facturas-digitales/factura-verde/Factura-digital---herocategory.jpg?h=250&iar=0&w=584&rev=59ca23ec50c747fd9a01d5820f0c6314&sc_lang=es-ES&hash=F4B390ED435D76CB4D082AB7533B40A4" alt="Factura verde en la app de Makro" />
+          </article>
+        </div>
+      </section>
+
+      <section class="tiles" aria-label="Accesos rápidos">
+        <a class="tile" href="https://tienda.makro.es/shop">
+          <img src="https://cdn.metro-online.com/-/media/Project/MCW/shared/Action-Teaser-Small-Icons/at_assortment.svg?iar=0&rev=-1&hash=71E4C8862CB1AB7BA6A4AC84CE5C7CBC" alt="Productos tienda" />
+          <span>Productos tienda</span>
+        </a>
+        <a class="tile" href="https://www.makro.es/tiendas">
+          <img src="https://cdn.metro-online.com/-/media/Project/MCW/shared/Action-Teaser-Small-Icons/at_store.svg?iar=0&rev=-1&hash=2A37ACC938F82B4B15FFE1634E8CBF09" alt="Nuestras tiendas" />
+          <span>Nuestras tiendas</span>
+        </a>
+        <a class="tile" href="https://www.makro.es/ofertas/folletos-y-catalogos">
+          <img src="https://cdn.metro-online.com/-/media/Project/MCW/shared/Action-Teaser-Small-Icons/at_catalogues.svg?iar=0&rev=-1&hash=C45FEF6D7A8BA0A4BC84D02C4B121CB6" alt="Catálogos" />
+          <span>Catálogos</span>
+        </a>
+        <a class="tile" href="https://www.makro.es/hacerse-cliente-makro">
+          <img src="https://cdn.metro-online.com/-/media/Project/MCW/shared/Action-Teaser-Small-Icons/at_bac.svg?iar=0&rev=-1&hash=CC5D62006FD329280CCB5294F8FC8C5E" alt="Hazte cliente Makro" />
+          <span>Hazte cliente Makro</span>
+        </a>
+      </section>
+    </main>
+  </div>
+
+  <p class="repo-note">Single-file HTML optimized for GitHub repositories and GitHub Pages: inline CSS, absolute assets, no JavaScript dependencies, and breakpoints tuned to preserve the Makro visual hierarchy on tablet and mobile.</p>
 </body>
 </html>
-``
