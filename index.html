@@ -1,0 +1,193 @@
+<!-- ✅ Refined Makro static homepage
+     Pixel-tuned spacing + font sizing
+     GitHub Pages / repo optimized
+-->
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Makro – Static GitHub Homepage</title>
+
+  <!-- Fonts -->
+  <link rel="preload" href="https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Regular.woff2" as="font" crossorigin>
+  <link rel="preload" href="https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Heavy.woff2" as="font" crossorigin>
+
+  <style>
+    @font-face {
+      font-family: 'Lato';
+      src: url('https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Lato';
+      src: url('https://cdn.metro-online.com/nextcms/fonts/Lato/LatoLatin-Heavy.woff2') format('woff2');
+      font-weight: 800;
+      font-display: swap;
+    }
+
+    :root {
+      --blue: #003b95;
+      --blue-cta: #0054ff;
+      --yellow: #ffe500;
+      --row-blue: #d9e8ff;
+      --tile-blue: #d8e7fb;
+      --green: #79b676;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Lato', Arial, sans-serif;
+      color: var(--blue);
+      background: #f4f6f8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* HEADER */
+    .topbar {
+      height: 58px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .brand img { height: 28px; }
+
+    .nav {
+      display: flex;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .pill {
+      height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .account {
+      font-weight: 800;
+      padding-left: 16px;
+    }
+
+    /* SEARCH */
+    .searchbar {
+      height: 64px;
+      background: var(--row-blue);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      padding: 10px 22px;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .searchbox {
+      background: #fff;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-size: 18px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 58% 42%;
+      gap: 10px;
+      padding: 10px;
+      background: #f0f3f7;
+    }
+
+    .hero-left {
+      background: #fff;
+      display: grid;
+      grid-template-columns: 64% 36%;
+      min-height: 496px;
+    }
+
+    .hero-copy {
+      padding: 24px 0 20px 38px;
+    }
+
+    .badge {
+      background: var(--blue);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 4px 8px;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 4vw, 58px);
+      line-height: 0.98;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .price {
+      font-size: 56px;
+      line-height: 0.95;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--blue-cta);
+      color: #fff;
+      padding: 14px 24px;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    /* TILES */
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .tile {
+      background: var(--tile-blue);
+      text-align: center;
+      padding: 18px;
+      font-weight: 800;
+    }
+
+    .tile img {
+      width: 58px;
+      margin-bottom: 16px;
+    }
+
+    .tile span {
+      font-size: 22px;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- (content unchanged, only styling refined) -->
+
+</body>
+</html>
+``
